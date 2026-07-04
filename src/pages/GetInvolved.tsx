@@ -124,9 +124,11 @@ const GetInvolved = () => {
                        <p className="text-[11px] text-muted-foreground mt-2">For receipt, send screenshot on WhatsApp: 9716565758</p>
                      </div>
 
-                    <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/80 font-bold">
-                      <a href="https://wa.me/918866591008?text=I%20want%20to%20donate" target="_blank" rel="noopener noreferrer">Donate via WhatsApp</a>
-                    </Button>
+                    <RazorpayButton
+                      amount={donationAmount}
+                      label="Donate"
+                      className="w-full bg-accent text-accent-foreground hover:bg-accent/80 font-bold"
+                    />
                   </CardContent>
                 </Card>
               </motion.div>
