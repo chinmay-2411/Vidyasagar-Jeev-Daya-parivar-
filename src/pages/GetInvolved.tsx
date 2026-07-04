@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import RazorpayButton from "@/components/RazorpayButton";
 
 const GetInvolved = () => {
   const { toast } = useToast();
