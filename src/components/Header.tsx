@@ -94,7 +94,7 @@ const Header = () => {
             ))}
             <div className="px-6 py-3">
               <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/80 font-bold">
-                <a href="https://wa.me/918866591008?text=I%20want%20to%20donate" target="_blank" rel="noopener noreferrer">
+                <a href='https://rzp.io/rzp/U1ekE7qi' target="_blank" rel="noopener noreferrer">
                   Donate Now
                 </a>
               </Button>
