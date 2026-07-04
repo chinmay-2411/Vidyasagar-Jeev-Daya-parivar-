@@ -64,7 +64,7 @@ const RazorpayButton = ({
         description,
         order_id: data.order_id,
         prefill,
-        theme: { color: "#059669" },
+        theme: { color: "#2e6040" },
         modal: {
           ondismiss: () => {
             setLoading(false);
