@@ -12,6 +12,7 @@ import RazorpayButton from "@/components/RazorpayButton";
 const GetInvolved = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [donationAmount, setDonationAmount] = useState<number>(1100);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
