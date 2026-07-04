@@ -46,7 +46,7 @@ const Index = () => {
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/80 font-bold text-base shadow-lg hover:shadow-xl transition-all">
-                <a href="https://wa.me/918866591008?text=I%20want%20to%20donate" target="_blank" rel="noopener noreferrer">
+                <a href='https://rzp.io/rzp/U1ekE7qi' target="_blank" rel="noopener noreferrer">
                   <Heart className="h-5 w-5 mr-1" /> Donate Now
                 </a>
               </Button>
@@ -232,7 +232,7 @@ const Index = () => {
 
             <div className="text-center">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/80 font-bold text-base shadow-lg">
-                <a href="https://wa.me/918866591008?text=I%20want%20to%20donate" target="_blank" rel="noopener noreferrer">
+                <a href='https://rzp.io/rzp/U1ekE7qi' target="_blank" rel="noopener noreferrer">
                   Donate via WhatsApp
                 </a>
               </Button>
@@ -250,7 +250,7 @@ const Index = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/80 font-bold text-base shadow-lg">
-              <a href="https://wa.me/918866591008?text=I%20want%20to%20donate" target="_blank" rel="noopener noreferrer">
+              <a href='https://rzp.io/rzp/U1ekE7qi' target="_blank" rel="noopener noreferrer">
                 Donate Now
               </a>
             </Button>
