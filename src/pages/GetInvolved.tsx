@@ -66,19 +66,40 @@ const GetInvolved = () => {
                     <p className="text-muted-foreground text-sm mb-4">Your donations help us run our shelters, hospitals, and ambulance services. Every contribution saves a life.</p>
                     
                     {/* Donation Tiers */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
                       {[
-                        { amount: "₹1,100", label: "Food" },
-                        { amount: "₹2,100", label: "Shelter Support" },
-                        { amount: "₹3,100", label: "Ambulance" },
-                        { amount: "₹5,100", label: "Medicine" },
-                        { amount: "₹11,000", label: "All Support" },
-                      ].map((tier, i) => (
-                        <div key={i} className="bg-background rounded-lg p-3 text-center border border-primary/20 hover:border-primary/40 transition-colors">
-                          <div className="font-bold text-primary text-sm">{tier.amount}</div>
+                        { amount: 1100, label: "Food" },
+                        { amount: 2100, label: "Shelter Support" },
+                        { amount: 3100, label: "Ambulance" },
+                        { amount: 5100, label: "Medicine" },
+                        { amount: 11000, label: "All Support" },
+                      ].map((tier) => (
+                        <button
+                          key={tier.amount}
+                          type="button"
+                          onClick={() => setDonationAmount(tier.amount)}
+                          className={`bg-background rounded-lg p-3 text-center border transition-colors ${
+                            donationAmount === tier.amount
+                              ? "border-primary ring-2 ring-primary/30"
+                              : "border-primary/20 hover:border-primary/40"
+                          }`}
+                        >
+                          <div className="font-bold text-primary text-sm">₹{tier.amount.toLocaleString("en-IN")}</div>
                           <div className="text-[11px] text-muted-foreground">{tier.label}</div>
-                        </div>
+                        </button>
                       ))}
+                    </div>
+
+                    {/* Custom Amount */}
+                    <div className="mb-4">
+                      <label className="text-xs font-medium text-muted-foreground block mb-1">Or enter custom amount (₹)</label>
+                      <Input
+                        type="number"
+                        min={1}
+                        value={donationAmount}
+                        onChange={(e) => setDonationAmount(Math.max(0, Number(e.target.value)))}
+                        className="bg-background"
+                      />
                     </div>
 
                      {/* UPI QR Code */}
