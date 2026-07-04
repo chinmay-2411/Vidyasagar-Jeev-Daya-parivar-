@@ -7,10 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import RazorpayButton from "@/components/RazorpayButton";
 
 const GetInvolved = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [donationAmount, setDonationAmount] = useState<number>(1100);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,19 +66,40 @@ const GetInvolved = () => {
                     <p className="text-muted-foreground text-sm mb-4">Your donations help us run our shelters, hospitals, and ambulance services. Every contribution saves a life.</p>
                     
                     {/* Donation Tiers */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
                       {[
-                        { amount: "₹1,100", label: "Food" },
-                        { amount: "₹2,100", label: "Shelter Support" },
-                        { amount: "₹3,100", label: "Ambulance" },
-                        { amount: "₹5,100", label: "Medicine" },
-                        { amount: "₹11,000", label: "All Support" },
-                      ].map((tier, i) => (
-                        <div key={i} className="bg-background rounded-lg p-3 text-center border border-primary/20 hover:border-primary/40 transition-colors">
-                          <div className="font-bold text-primary text-sm">{tier.amount}</div>
+                        { amount: 1100, label: "Food" },
+                        { amount: 2100, label: "Shelter Support" },
+                        { amount: 3100, label: "Ambulance" },
+                        { amount: 5100, label: "Medicine" },
+                        { amount: 11000, label: "All Support" },
+                      ].map((tier) => (
+                        <button
+                          key={tier.amount}
+                          type="button"
+                          onClick={() => setDonationAmount(tier.amount)}
+                          className={`bg-background rounded-lg p-3 text-center border transition-colors ${
+                            donationAmount === tier.amount
+                              ? "border-primary ring-2 ring-primary/30"
+                              : "border-primary/20 hover:border-primary/40"
+                          }`}
+                        >
+                          <div className="font-bold text-primary text-sm">₹{tier.amount.toLocaleString("en-IN")}</div>
                           <div className="text-[11px] text-muted-foreground">{tier.label}</div>
-                        </div>
+                        </button>
                       ))}
+                    </div>
+
+                    {/* Custom Amount */}
+                    <div className="mb-4">
+                      <label className="text-xs font-medium text-muted-foreground block mb-1">Or enter custom amount (₹)</label>
+                      <Input
+                        type="number"
+                        min={1}
+                        value={donationAmount}
+                        onChange={(e) => setDonationAmount(Math.max(0, Number(e.target.value)))}
+                        className="bg-background"
+                      />
                     </div>
 
                      {/* UPI QR Code */}
@@ -101,9 +124,11 @@ const GetInvolved = () => {
                        <p className="text-[11px] text-muted-foreground mt-2">For receipt, send screenshot on WhatsApp: 9716565758</p>
                      </div>
 
-                    <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/80 font-bold">
-                      <a href="https://wa.me/918866591008?text=I%20want%20to%20donate" target="_blank" rel="noopener noreferrer">Donate via WhatsApp</a>
-                    </Button>
+                    <RazorpayButton
+                      amount={donationAmount}
+                      label="Donate"
+                      className="w-full bg-accent text-accent-foreground hover:bg-accent/80 font-bold"
+                    />
                   </CardContent>
                 </Card>
               </motion.div>
